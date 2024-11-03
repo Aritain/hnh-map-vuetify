@@ -55,9 +55,15 @@ func (m *Map) index(rw http.ResponseWriter, req *http.Request) {
 
 func (m *Map) login(rw http.ResponseWriter, req *http.Request) {
 	if req.Method == "POST" {
+		if err := req.ParseForm(); err != nil {
+			log.Printf("Error parsing form: %v\n", err)
+			http.Error(rw, "Invalid form data", http.StatusBadRequest)
+			return
+		}
+		user := req.FormValue("user")
 		ip := req.RemoteAddr
 		u := m.getUser(req.FormValue("user"), req.FormValue("pass"))
-		log.Printf("User %s attempting to log in from IP: %s\n", req.FormValue("user"), ip)
+		log.Printf("User %s attempting to log in from IP: %s\n", user, ip)
 		if u != nil {
 			session := make([]byte, 32)
 			rand.Read(session)
