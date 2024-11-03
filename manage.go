@@ -56,8 +56,8 @@ func (m *Map) index(rw http.ResponseWriter, req *http.Request) {
 func (m *Map) login(rw http.ResponseWriter, req *http.Request) {
 	if req.Method == "POST" {
 		ip := req.RemoteAddr
-		log.Printf("User attempting to log in from IP: %s\n", ip)
 		u := m.getUser(req.FormValue("user"), req.FormValue("pass"))
+		log.Printf("User %s attempting to log in from IP: %s\n", req.FormValue("user"), ip)
 		if u != nil {
 			session := make([]byte, 32)
 			rand.Read(session)
