@@ -47,7 +47,9 @@ export class Marker {
             this.marker.addTo(mapview.markerLayer);
             this.marker.on("click", this.callClickCallback.bind(this));
             this.marker.on("contextmenu", this.callContextCallback.bind(this));
-            if (this.image === "gfx/terobjs/mm/gianttoad" || this.image === "gfx/invobjs/small/bush.png") {
+            if (this.image === "gfx/terobjs/mm/gianttoad" ) {
+                this.marker.bindTooltip(this.name, { permanent: true, direction: 'top', opacity: 1, className: 'custom-tooltip' });
+            } else if (this.image === "gfx/terobjs/mm/gianttoad" ) {
                 this.marker.bindTooltip(this.name, { permanent: true, direction: 'top', opacity: 1, className: 'custom-tooltip' });
             }
         }
