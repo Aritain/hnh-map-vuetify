@@ -31,7 +31,7 @@ export class Character {
 
             // Create a marker with a tooltip (player name)
             this.marker = L.marker(position)
-                .bindTooltip(this.name, { permanent: true, direction: 'top', opacity: 1, offset: [0, -12] })
+                .bindTooltip(this.name, { permanent: true, direction: 'top', opacity: 1, offset: [-15, 0] })
                 .on("click", this.callCallback.bind(this))
                 .addTo(mapview.map);
         }
