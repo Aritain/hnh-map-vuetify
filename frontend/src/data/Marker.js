@@ -47,8 +47,17 @@ export class Marker {
             this.marker.addTo(mapview.markerLayer);
             this.marker.on("click", this.callClickCallback.bind(this));
             this.marker.on("contextmenu", this.callContextCallback.bind(this));
-            if (this.type === "quset" ) {
-                this.marker.bindTooltip(this.name, { permanent: true, direction: 'top', opacity: 1, className: 'custom-tooltip' });
+            if (
+                this.image === "gfx/terobjs/mm/gianttoad" || 
+                this.image === "gfx/invobjs/small/bush" || 
+                this.image === "gfx/invobjs/small/bumling"
+            ) {
+                this.marker.bindTooltip(this.name, { 
+                    permanent: true, 
+                    direction: 'top', 
+                    opacity: 1, 
+                    className: 'custom-tooltip' 
+                });
             }
         }
     }
