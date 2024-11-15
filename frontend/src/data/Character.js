@@ -30,7 +30,14 @@ export class Character {
             let position = mapview.map.unproject([this.position.x, this.position.y], HnHMaxZoom);
 
             // Create a marker with a tooltip (player name)
-            this.marker = L.marker(position)
+            this.marker = L.marker(position, {
+                icon: L.icon({
+                    iconUrl: this.iconUrl, // Use the current icon URL
+                    iconSize: [24, 24], // Replace with your icon size if different
+                    iconAnchor: [12, 12], // Center the icon
+                    tooltipAnchor: [0, -12] // Adjust to center tooltip above the icon
+                })
+            })
                 .bindTooltip(this.name, { permanent: true, direction: 'top', opacity: 1 })
                 .on("click", this.callCallback.bind(this))
                 .addTo(mapview.map);
