@@ -29,6 +29,14 @@ export class Character {
         if (this.map == mapview.mapid) {
             let position = mapview.map.unproject([this.position.x, this.position.y], HnHMaxZoom);
 
+            // Define the custom icon using the "down-arrow.png"
+            let customIcon = new L.Icon({
+                iconUrl: "gfx/terobjs/mm/down-arrow.png",
+                iconSize: [24, 24], // Adjust size as needed
+                iconAnchor: [12, 12], // Center the icon
+                tooltipAnchor: [0, -12] // Adjust tooltip positioning relative to the icon
+            });
+
             // Create a marker with a tooltip (player name)
             this.marker = L.marker(position)
                 .bindTooltip(this.name, { permanent: true, direction: 'top', opacity: 1 })
