@@ -594,6 +594,15 @@
     .hidden {
         display: none;
     }
+
+    .leaflet-tooltip.custom-tooltip {
+        background-color: black !important; /* Set the background color to black */
+        color: white !important;           /* Set the text color to white */
+        border: none;                      /* Remove any border */
+        font-weight: bold;                 /* Make the text bold (optional) */
+        padding: 5px;                      /* Add some padding (adjust as needed) */
+        border-radius: 5px;                /* Optional: rounded corners */
+    }
     
     @import  '~vue-context/dist/css/vue-context.css';
 </style>

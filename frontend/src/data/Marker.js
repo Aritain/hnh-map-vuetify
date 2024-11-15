@@ -37,8 +37,8 @@ export class Marker {
             if(this.image == "gfx/terobjs/mm/custom") {
                 icon = new ImageIcon({iconUrl: 'gfx/terobjs/mm/custom.png', iconSize: [21, 23], iconAnchor: [11, 21], popupAnchor: [1, 3], tooltipAnchor: [1, 3]})
             } else if (this.image === "gfx/terobjs/mm/thingwall") {
-		icon = new ImageIcon({iconUrl: `gfx/terobjs/mm/thingwall.png`, iconSize: [72, 72], iconAnchor: [36, 36], popupAnchor: [1, 3], tooltipAnchor: [1, 3]});	    
-	    } else {
+		        icon = new ImageIcon({iconUrl: `gfx/terobjs/mm/thingwall.png`, iconSize: [72, 72], iconAnchor: [36, 36], popupAnchor: [1, 3], tooltipAnchor: [1, 3]});
+	        } else {
                 icon = new ImageIcon({iconUrl: `${this.image}.png`, iconSize: [16, 16]});
             }
             
@@ -47,6 +47,9 @@ export class Marker {
             this.marker.addTo(mapview.markerLayer);
             this.marker.on("click", this.callClickCallback.bind(this));
             this.marker.on("contextmenu", this.callContextCallback.bind(this));
+            if (this.image === "gfx/terobjs/mm/gianttoad") {
+                this.marker.bindTooltip(this.name, { permanent: true, direction: 'top', opacity: 1, className: 'custom-tooltip' });
+            }
         }
     }
 
